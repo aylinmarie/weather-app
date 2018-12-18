@@ -18,7 +18,6 @@ class App extends React.Component{
   }
   getWeather = async (e) => {
     e.preventDefault();
-    console.log(e);
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
 
