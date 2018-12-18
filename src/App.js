@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Titles from './components/titles.js';
-import Form from './components/form.js';
+import Search from './components/search.js';
 import Weather from './components/weather/weather.js';
 
 class App extends React.Component{
@@ -40,7 +40,7 @@ class App extends React.Component{
     return (
       <div id="amd-weather-app">
         <Titles />
-        <Form loadWeather={this.getWeather} />
+        <Search loadWeather={this.getWeather} />
         <Weather temperature={this.state.temperature}
                   city={this.state.city}
                   country={this.state.country}
