@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import Titles from './components/titles.js';
 import Form from './components/form.js';
-import Weather from './components/weather.js';
+import Weather from './components/weather/weather.js';
 
 class App extends React.Component{
   constructor(props) {
@@ -39,7 +39,7 @@ class App extends React.Component{
   }
   render() {
     return (
-      <div className="amd-weather-app ">
+      <div id="amd-weather-app">
         <Titles />
         <Form loadWeather={this.getWeather} />
         <Weather temperature={this.state.temperature}

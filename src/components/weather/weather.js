@@ -1,7 +1,9 @@
 import React from 'react';
+import './weather.scss';
+
 const Weather = (props) => {
   return(
-    <div>
+    <div className='amd-weather-component'>
       {props.country && props.city && <h1>{props.city}, {props.country}</h1>}
       {props.country && <p>{props.description}</p>}
 
