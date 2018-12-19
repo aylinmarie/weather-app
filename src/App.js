@@ -1,8 +1,15 @@
 import React from 'react';
 import './App.scss';
+
 import Titles from './components/titles.js';
 import Search from './components/search.js';
 import Weather from './components/weather/weather.js';
+
+import sunIcon from './assets/img/sun-light.png';
+import rainIcon from './assets/img/rain.png';
+import cloudIcon from './assets/img/cloud.png';
+
+
 
 class App extends React.Component{
   constructor(props) {
@@ -13,7 +20,8 @@ class App extends React.Component{
       country: undefined,
       humidity: undefined,
       description: undefined,
-      error: undefined
+      error: undefined,
+      icon: undefined
     }
   }
   getWeather = async (e) => {
@@ -34,6 +42,32 @@ class App extends React.Component{
         description: response.weather[0].description,
         error: ""
       })
+
+      // Swap Icons based on Description
+      switch(response.weather[0].description) {
+        case 'rain':
+        case 'shower rain':
+          this.setState({
+            icon: rainIcon
+          })
+          break;
+        case 'clear sky':
+          this.setState({
+            icon: sunIcon
+          })
+          break;
+        case 'few clouds':
+        case 'scattered clouds':
+        case 'broken clouds':
+          this.setState({
+            icon: cloudIcon
+          })
+          break;
+        default:
+          this.setState({
+            icon: ''
+          })
+      }
     } 
   }
   render() {
@@ -45,7 +79,8 @@ class App extends React.Component{
                   city={this.state.city}
                   country={this.state.country}
                   humidity={this.state.humidity}
-                  description={this.state.description}/>
+                  description={this.state.description}
+                  icon={this.state.icon}/>
       </div>
     );
   }
