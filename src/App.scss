@@ -10,6 +10,11 @@ body, html {
 h1, h2, h3, h4, p {
   // color: white;
 }
+
+a, a:hover {
+  color: $blue;
+}
+
 #amd-weather-app {
   background: $lightgrey;
   margin: auto;
@@ -29,4 +34,9 @@ h1, h2, h3, h4, p {
 
 .amd-error {
   margin-top: 20px;
+}
+
+.amd-footer {
+  margin-top: 20px;
+  text-align: center;
 }

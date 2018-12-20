@@ -96,20 +96,24 @@ class App extends React.Component{
   } 
   render() {
     return (
-      <div id="amd-weather-app">
-      <FontAwesomeIcon color="#497098" size="2x" icon={['fal', 'clouds']} />
-        <Titles />
-        <Search loadWeather={this.getWeather} />
-        {this.state.temperature && <Weather temperature={this.state.temperature}
-                temperatureCelsius={this.state.temperatureCelsius}
-                temp_max={this.state.temp_max}
-                temp_min={this.state.temp_min}
-                city={this.state.city}
-                country={this.state.country}
-                humidity={this.state.humidity}
-                description={this.state.description}
-                icon={this.state.icon}/> }
-        {this.state.error && <Alert className="amd-error" color="danger"> {this.state.error} </Alert>}
+      <div>
+        <div id="amd-weather-app">
+          <FontAwesomeIcon color="#497098" size="2x" icon={['fal', 'clouds']} />
+          <Titles />
+          <Search loadWeather={this.getWeather} />
+          {this.state.temperature && <Weather temperature={this.state.temperature}
+                  temperatureCelsius={this.state.temperatureCelsius}
+                  temp_max={this.state.temp_max}
+                  temp_min={this.state.temp_min}
+                  city={this.state.city}
+                  country={this.state.country}
+                  humidity={this.state.humidity}
+                  description={this.state.description}
+                  icon={this.state.icon}/> }
+          {this.state.error && <Alert className="amd-error" color="danger"> {this.state.error} </Alert>}
+          
+        </div>
+        <p className="amd-footer">Designed and Developed by <a href="https://aylinmarie.co/" target="_blank" rel="noopener noreferrer">Aylin Marie</a></p>
       </div>
     );
   }
