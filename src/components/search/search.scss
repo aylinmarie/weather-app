@@ -1,1 +1,21 @@
 @import '../../App.scss';
+
+.amd-search {
+    .amd-field-input {
+        border:none;
+        border-bottom: 2px solid $blue;
+        border-radius: 0;
+    }
+    .amd-search-button {
+        width: 100%;
+        max-width: 250px;
+        margin: 20px 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 13px;
+        font-weight: 600;
+        background: $blue;
+        border: none;
+        padding: 15px 10px;
+    }
+}

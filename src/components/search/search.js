@@ -1,4 +1,6 @@
 import React from 'react';
+import './search.scss';
+
 import { Button, Form, FormGroup, Input } from 'reactstrap';
 
 class Search extends React.Component{
@@ -7,13 +9,15 @@ class Search extends React.Component{
   }
   render() {
     return (
-      <Form onSubmit = {this.props.loadWeather} >
-        <FormGroup>
-          <Input type="text" name="city" placeholder="City..." />
-          <Input type="text" name="country" placeholder="Country..." />
-          <Button>Get Weather</Button>
-        </FormGroup>
-      </Form>
+      <div className="amd-search">
+        <Form onSubmit = {this.props.loadWeather} >
+          <FormGroup>
+            <Input className="amd-field-input" type="text" name="city" placeholder="city" />
+            <Input className="amd-field-input" type="text" name="country" placeholder="country" />
+            <Button className="amd-search-button">Get Weather</Button>
+          </FormGroup>
+        </Form>
+      </div>
     )
   }
 }
