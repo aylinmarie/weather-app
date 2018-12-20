@@ -67,7 +67,7 @@ class App extends React.Component{
           this.setState({
             icon: 'fal fa-sun fa-4x'
           })
-        } else if((s > 800) && (s < 805)) {
+        } else if((s >= 801) && (s <= 805)) {
           this.setState({
             icon: 'fal fa-clouds fa-4x'
           })
