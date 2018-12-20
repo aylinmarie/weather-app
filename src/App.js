@@ -6,6 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloud } from '@fortawesome/free-solid-svg-icons';
 import { fal } from '@fortawesome/pro-light-svg-icons';
+import { dom } from '@fortawesome/fontawesome-svg-core'
 
 import Titles from './components/titles/titles.js';
 import Search from './components/search/search.js';
@@ -15,7 +16,11 @@ import sunIcon from './assets/img/sun-light.png';
 import rainIcon from './assets/img/rain.png';
 import cloudIcon from './assets/img/cloud.png';
 
-library.add(fal);
+dom.watch()
+library.add(
+  fal,
+  faCloud
+);
 
 class App extends React.Component{
   constructor(props) {
@@ -76,12 +81,12 @@ class App extends React.Component{
         case 'scattered clouds':
         case 'broken clouds':
           this.setState({
-            icon: cloudIcon
+            icon: 'fal fa-clouds fa-4x'
           })
           break;
         default:
           this.setState({
-            icon: ''
+            icon: 'fal fa-clouds fa-4x'
           })
           break;
       }
@@ -90,7 +95,7 @@ class App extends React.Component{
   render() {
     return (
       <div id="amd-weather-app">
-      <FontAwesomeIcon icon={['fal', 'clouds']} />
+      <FontAwesomeIcon color="#497098" size="2x" icon={['fal', 'clouds']} />
         <Titles />
         <Search loadWeather={this.getWeather} />
         {this.state.temperature && <Weather temperature={this.state.temperature}

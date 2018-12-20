@@ -8,7 +8,7 @@ const Weather = (props) => {
     <div className='amd-weather-component'>
       {props.country && <h2>{props.description}</h2>}
       {props.country && props.city && <p className="amd-city">{props.city}, {props.country}</p>}
-      {props.icon && <img alt="Weather Icon" src={props.icon} /> }
+      {props.icon && <i className={props.icon}></i> }
 
        <div>  
           {props.temperature && props.temperatureCelsius && <p className="amd-temperature">{props.temperature} &#8457;</p>}
