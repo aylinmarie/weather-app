@@ -1,7 +1,38 @@
+@import '../../App.scss';
+
 .amd-weather-component {
+    background: $blue;
+    border: 1px solid white;
+    padding: 25px;
+    margin: auto;
+    border-radius: 10px;
+    max-width: 320px;
+    width: 100%;
+
+    h1, h2, h3, h4, p {
+        color: white;
+    }
+
+    h2 {
+        font-weight: 200;
+    }
+    h4 {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 15px;
+    }
+
     img {
         max-width: 100px;
         height: auto;
         margin: 20px 0; 
+    }
+    .amd-city {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 13px;
+    }
+    .amd-temperature {
+        font-size: 50px;
     }
 }

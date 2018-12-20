@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.scss';
+import { Animated } from "react-animated-css";
 
 import Titles from './components/titles.js';
-import Search from './components/search.js';
+import Search from './components/search/search.js';
 import Weather from './components/weather/weather.js';
 
 import sunIcon from './assets/img/sun-light.png';
@@ -17,6 +18,8 @@ class App extends React.Component{
     this.state = {
       temperature: undefined,
       temperatureCelsius: undefined,
+      temp_max: undefined,
+      temp_min: undefined,
       city: undefined,
       country: undefined,
       humidity: undefined,
@@ -25,6 +28,7 @@ class App extends React.Component{
       icon: undefined
     }
   }
+
   getWeather = async (e) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
@@ -39,6 +43,8 @@ class App extends React.Component{
       this.setState({
         temperature: Math.round(9/5 * (response.main.temp - 273) + 32),
         temperatureCelsius: Math.round( response.main.temp - 273.15),
+        temp_max: Math.round(9/5 * (response.main.temp_max - 273) + 32),
+        temp_min: Math.round(9/5 * (response.main.temp_min - 273) + 32),
         city: response.name,
         country: response.sys.country,
         humidity: response.main.humidity,
@@ -51,6 +57,7 @@ class App extends React.Component{
         case 'rain':
         case 'shower rain':
         case 'light rain':
+        case 'heavy intensity rain':
           this.setState({
             icon: rainIcon
           })
@@ -80,13 +87,15 @@ class App extends React.Component{
       <div id="amd-weather-app">
         <Titles />
         <Search loadWeather={this.getWeather} />
-        <Weather temperature={this.state.temperature}
-                  temperatureCelsius={this.state.temperatureCelsius}
-                  city={this.state.city}
-                  country={this.state.country}
-                  humidity={this.state.humidity}
-                  description={this.state.description}
-                  icon={this.state.icon}/>
+        {this.state.temperature && <Weather temperature={this.state.temperature}
+                temperatureCelsius={this.state.temperatureCelsius}
+                temp_max={this.state.temp_max}
+                temp_min={this.state.temp_min}
+                city={this.state.city}
+                country={this.state.country}
+                humidity={this.state.humidity}
+                description={this.state.description}
+    icon={this.state.icon}/> }
       </div>
     );
   }
