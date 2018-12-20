@@ -14,21 +14,23 @@ library.add(
   fal
 );
 
+const initialState = {
+  temperature: undefined,
+  temperatureCelsius: undefined,
+  temp_max: undefined,
+  temp_min: undefined,
+  city: undefined,
+  country: undefined,
+  humidity: undefined,
+  description: undefined,
+  error: undefined,
+  icon: undefined
+}
+
 class App extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {
-      temperature: undefined,
-      temperatureCelsius: undefined,
-      temp_max: undefined,
-      temp_min: undefined,
-      city: undefined,
-      country: undefined,
-      humidity: undefined,
-      description: undefined,
-      error: undefined,
-      icon: undefined
-    }
+    this.state = initialState;
   }
 
   getWeather = async (e) => {
@@ -71,7 +73,6 @@ class App extends React.Component{
           newIcon = '';
           break;
       }
-      console.log(newIcon)
       this.setState({
         temperature: Math.round(9/5 * (response.main.temp - 273) + 32),
         temperatureCelsius: Math.round( response.main.temp - 273.15),
@@ -85,8 +86,9 @@ class App extends React.Component{
         error: ""
       })
     } else {
+      this.setState(initialState);
       this.setState({
-        error: "Oops, couldn't seem to find that on the map."
+        error: "Oops, couldn't seem to find that on the map.",
       })
     }
   } 
