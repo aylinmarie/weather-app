@@ -4,13 +4,13 @@ import './weather.scss';
 const Weather = (props) => {
   return(
     <div className='amd-weather-component'>
-      {props.country && props.city && <h1>{props.city}, {props.country}</h1>}
-      {props.country && <p>{props.description}</p>}
+      {props.country && <h2>{props.description}</h2>}
+      {props.country && props.city && <p>{props.city}, {props.country}</p>}
       {props.icon && <img alt="Weather Icon" src={props.icon} /> }
 
        <div>  
-          {props.temperature && props.temperatureCelsius && <h2>Temperature: {props.temperature} &#8457; / {props.temperatureCelsius} &#8451;</h2>}
-          {props.humidity && <h2>Humidity: {props.humidity}%</h2>}
+          {props.temperature && props.temperatureCelsius && <h3>Temperature: {props.temperature} &#8457; / {props.temperatureCelsius} &#8451;</h3>}
+          {props.humidity && <h4>Humidity: {props.humidity}%</h4>}
        </div>
     </div>
    )

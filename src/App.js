@@ -50,6 +50,7 @@ class App extends React.Component{
       switch(response.weather[0].description) {
         case 'rain':
         case 'shower rain':
+        case 'light rain':
           this.setState({
             icon: rainIcon
           })
