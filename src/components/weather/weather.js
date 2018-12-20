@@ -1,8 +1,10 @@
 import React from 'react';
 import './weather.scss';
+import { Animated } from 'react-animated-css';
 
 const Weather = (props) => {
   return(
+   <Animated animationIn="fadeInUp" animationOut="fadeOut" isVisible={true}>
     <div className='amd-weather-component'>
       {props.country && <h2>{props.description}</h2>}
       {props.country && props.city && <p className="amd-city">{props.city}, {props.country}</p>}
@@ -16,6 +18,7 @@ const Weather = (props) => {
           {props.humidity && <h4>Humidity: {props.humidity}%</h4>}
        </div>
     </div>
+   </Animated>
    )
 }
 export default Weather;
