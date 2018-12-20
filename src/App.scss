@@ -7,10 +7,6 @@ body, html {
   padding: 2%;
 }
 
-h1, h2, h3, h4, p {
-  // color: white;
-}
-
 a, a:hover {
   color: $blue;
 }
@@ -33,7 +29,7 @@ a, a:hover {
 }
 
 .amd-error {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .amd-footer {
