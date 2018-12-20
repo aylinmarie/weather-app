@@ -12,10 +12,6 @@ import Titles from './components/titles/titles.js';
 import Search from './components/search/search.js';
 import Weather from './components/weather/weather.js';
 
-import sunIcon from './assets/img/sun-light.png';
-import rainIcon from './assets/img/rain.png';
-import cloudIcon from './assets/img/cloud.png';
-
 dom.watch()
 library.add(
   fal,
@@ -66,15 +62,16 @@ class App extends React.Component{
       switch(response.weather[0].description) {
         case 'rain':
         case 'shower rain':
+        case 'moderate rain':
         case 'light rain':
         case 'heavy intensity rain':
           this.setState({
-            icon: rainIcon
+            icon: 'fal fa-raindrops fa-4x'
           })
           break;
         case 'clear sky':
           this.setState({
-            icon: sunIcon
+            icon: 'fal fa-sun fa-4x'
           })
           break;
         case 'few clouds':
