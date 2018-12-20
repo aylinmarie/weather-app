@@ -1,7 +1,6 @@
 import React from 'react';
 import './weather.scss';
 import { Animated } from 'react-animated-css';
-import { Alert } from 'reactstrap';
 
 const Weather = (props) => {
   return(
