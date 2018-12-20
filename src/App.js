@@ -16,6 +16,7 @@ class App extends React.Component{
     super(props);
     this.state = {
       temperature: undefined,
+      temperatureCelsius: undefined,
       city: undefined,
       country: undefined,
       humidity: undefined,
@@ -37,6 +38,7 @@ class App extends React.Component{
     if(city && country) {
       this.setState({
         temperature: Math.round(9/5 * (response.main.temp - 273) + 32),
+        temperatureCelsius: Math.round( response.main.temp - 273.15),
         city: response.name,
         country: response.sys.country,
         humidity: response.main.humidity,
@@ -78,6 +80,7 @@ class App extends React.Component{
         <Titles />
         <Search loadWeather={this.getWeather} />
         <Weather temperature={this.state.temperature}
+                  temperatureCelsius={this.state.temperatureCelsius}
                   city={this.state.city}
                   country={this.state.country}
                   humidity={this.state.humidity}
