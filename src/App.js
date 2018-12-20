@@ -4,18 +4,14 @@ import { Alert } from 'reactstrap';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloud } from '@fortawesome/free-solid-svg-icons';
 import { fal } from '@fortawesome/pro-light-svg-icons';
-import { dom } from '@fortawesome/fontawesome-svg-core'
 
 import Titles from './components/titles/titles.js';
 import Search from './components/search/search.js';
 import Weather from './components/weather/weather.js';
 
-dom.watch()
 library.add(
-  fal,
-  faCloud
+  fal
 );
 
 class App extends React.Component{
@@ -45,6 +41,37 @@ class App extends React.Component{
     const response = await api_call.json();
 
     if(city && country && (response.cod != 404)) {
+      console.log(response)
+      // Swap Icons based on Description
+      let s = response.weather[0].id;
+      let newIcon;
+      switch(true) {
+        case (s >= 500 && s <= 599):
+            newIcon = 'fal fa-raindrops fa-4x';
+          break;
+        case (s === 800):
+          newIcon = 'fal fa-sun fa-4x';
+          break;
+        case (s >= 801 && s <= 805):
+          newIcon = 'fal fa-clouds fa-4x';
+          break;
+        case (s >= 200 && s <= 235):
+          newIcon = 'fal fa-thunderstorm fa-4x';
+          break;
+        case (s >= 300 && s <= 321):
+          newIcon = 'fal fa-cloud-drizzle fa-4x';
+          break;
+        case (s >= 600 && s <= 622):
+          newIcon = 'fal fa-snowflakes fa-4x';
+          break;
+        case (s >= 701 && s <= 781):
+          newIcon = 'fal fa-wind fa-4x';
+          break;
+        default:
+          newIcon = '';
+          break;
+      }
+      console.log(newIcon)
       this.setState({
         temperature: Math.round(9/5 * (response.main.temp - 273) + 32),
         temperatureCelsius: Math.round( response.main.temp - 273.15),
@@ -54,40 +81,9 @@ class App extends React.Component{
         country: response.sys.country,
         humidity: response.main.humidity,
         description: response.weather[0].description,
+        icon: newIcon,
         error: ""
       })
-
-      // Swap Icons based on Description
-      let s = response.weather[0].id;
-        if((s >= 500) && (s <= 599)) {
-          this.setState({
-            icon: 'fal fa-raindrops fa-4x'
-          })
-        } else if(s === 800) {
-          this.setState({
-            icon: 'fal fa-sun fa-4x'
-          })
-        } else if((s >= 801) && (s <= 805)) {
-          this.setState({
-            icon: 'fal fa-clouds fa-4x'
-          })
-        } else if((s >= 200) && (s <= 235)) {
-          this.setState({
-            icon: 'fal fa-thunderstorm fa-4x'
-          })
-        } else if((s >= 300) && (s <= 321)) {
-          this.setState({
-            icon: 'fal fa-cloud-drizzle fa-4x'
-          })
-        } else if((s >= 600) && (s <= 622)) {
-          this.setState({
-            icon: 'fal fa-snowflakes fa-4x'
-          })
-        } else if((s >= 701) && (s <= 781)) {
-          this.setState({
-            icon: 'fal fa-wind fa-4x'
-          })
-        }
     } else {
       this.setState({
         error: "Oops, couldn't seem to find that on the map."
