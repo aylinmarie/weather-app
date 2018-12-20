@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 import { Animated } from "react-animated-css";
 
-import Titles from './components/titles.js';
+import Titles from './components/titles/titles.js';
 import Search from './components/search/search.js';
 import Weather from './components/weather/weather.js';
 
