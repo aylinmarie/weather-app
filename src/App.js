@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.scss';
-import $ from "jquery";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -59,34 +58,36 @@ class App extends React.Component{
       })
 
       // Swap Icons based on Description
-      switch(response.weather[0].description) {
-        case 'rain':
-        case 'shower rain':
-        case 'moderate rain':
-        case 'light rain':
-        case 'heavy intensity rain':
+      let s = response.weather[0].id;
+        if((s >= 500) && (s <= 599)) {
           this.setState({
             icon: 'fal fa-raindrops fa-4x'
           })
-          break;
-        case 'clear sky':
+        } else if(s === 800) {
           this.setState({
             icon: 'fal fa-sun fa-4x'
           })
-          break;
-        case 'few clouds':
-        case 'scattered clouds':
-        case 'broken clouds':
+        } else if((s > 800) && (s < 805)) {
           this.setState({
             icon: 'fal fa-clouds fa-4x'
           })
-          break;
-        default:
+        } else if((s >= 200) && (s <= 235)) {
           this.setState({
-            icon: 'fal fa-clouds fa-4x'
+            icon: 'fal fa-thunderstorm fa-4x'
           })
-          break;
-      }
+        } else if((s >= 300) && (s <= 321)) {
+          this.setState({
+            icon: 'fal fa-cloud-drizzle fa-4x'
+          })
+        } else if((s >= 600) && (s <= 622)) {
+          this.setState({
+            icon: 'fal fa-snowflakes fa-4x'
+          })
+        } else if((s >= 701) && (s <= 781)) {
+          this.setState({
+            icon: 'fal fa-wind fa-4x'
+          })
+        }
     } 
   }
   render() {
