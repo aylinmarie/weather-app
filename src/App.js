@@ -49,7 +49,7 @@ class App extends React.Component{
       let newIcon;
       switch(true) {
         case (s >= 500 && s <= 599):
-            newIcon = 'fal fa-raindrops fa-4x';
+          newIcon = 'fal fa-raindrops fa-4x';
           break;
         case (s === 800):
           newIcon = 'fal fa-sun fa-4x';
