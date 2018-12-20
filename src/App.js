@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import { Alert } from 'reactstrap';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -42,9 +43,8 @@ class App extends React.Component{
     const Api_Key = 'b8c41f2cff8f5a6e7650c586a7ef3b1f';
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${Api_Key}`);
     const response = await api_call.json();
-    console.log(response);
 
-    if(city && country) {
+    if(city && country && (response.cod != 404)) {
       this.setState({
         temperature: Math.round(9/5 * (response.main.temp - 273) + 32),
         temperatureCelsius: Math.round( response.main.temp - 273.15),
@@ -88,8 +88,12 @@ class App extends React.Component{
             icon: 'fal fa-wind fa-4x'
           })
         }
-    } 
-  }
+    } else {
+      this.setState({
+        error: "Oops, couldn't seem to find that on the map."
+      })
+    }
+  } 
   render() {
     return (
       <div id="amd-weather-app">
@@ -104,7 +108,8 @@ class App extends React.Component{
                 country={this.state.country}
                 humidity={this.state.humidity}
                 description={this.state.description}
-    icon={this.state.icon}/> }
+                icon={this.state.icon}/> }
+        {this.state.error && <Alert className="amd-error" color="danger"> {this.state.error} </Alert>}
       </div>
     );
   }
