@@ -1,5 +1,11 @@
 import React from 'react';
 import './App.scss';
+import $ from "jquery";
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCloud } from '@fortawesome/free-solid-svg-icons';
+import { fal } from '@fortawesome/pro-light-svg-icons';
 
 import Titles from './components/titles/titles.js';
 import Search from './components/search/search.js';
@@ -9,7 +15,7 @@ import sunIcon from './assets/img/sun-light.png';
 import rainIcon from './assets/img/rain.png';
 import cloudIcon from './assets/img/cloud.png';
 
-
+library.add(fal);
 
 class App extends React.Component{
   constructor(props) {
@@ -84,6 +90,7 @@ class App extends React.Component{
   render() {
     return (
       <div id="amd-weather-app">
+      <FontAwesomeIcon icon={['fal', 'clouds']} />
         <Titles />
         <Search loadWeather={this.getWeather} />
         {this.state.temperature && <Weather temperature={this.state.temperature}
