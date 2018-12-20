@@ -100,6 +100,7 @@ class App extends React.Component{
         <div id="amd-weather-app">
           <FontAwesomeIcon color="#497098" size="2x" icon={['fal', 'clouds']} />
           <Titles />
+          {this.state.error && <Alert className="amd-error" color="danger"> {this.state.error} </Alert>}
           <Search loadWeather={this.getWeather} />
           {this.state.temperature && <Weather temperature={this.state.temperature}
                   temperatureCelsius={this.state.temperatureCelsius}
@@ -109,9 +110,7 @@ class App extends React.Component{
                   country={this.state.country}
                   humidity={this.state.humidity}
                   description={this.state.description}
-                  icon={this.state.icon}/> }
-          {this.state.error && <Alert className="amd-error" color="danger"> {this.state.error} </Alert>}
-          
+                  icon={this.state.icon}/> }          
         </div>
         <p className="amd-footer">Designed and Developed by <a href="https://aylinmarie.co/" target="_blank" rel="noopener noreferrer">Aylin Marie</a></p>
       </div>
