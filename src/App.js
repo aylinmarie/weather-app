@@ -23,7 +23,6 @@ const initialState = {
   country: undefined,
   humidity: undefined,
   description: undefined,
-  error: undefined,
   icon: undefined
 }
 
