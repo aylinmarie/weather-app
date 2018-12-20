@@ -13,8 +13,8 @@ const Weather = (props) => {
        <div>  
           {props.temperature && props.temperatureCelsius && <p className="amd-temperature">{props.temperature} &#8457;</p>}
           {props.temperatureCelsius && <p>{props.temperatureCelsius} &#8451;</p>}
-          {props.temp_min && <h4>Low: {props.temp_min}%</h4>}
-          {props.temp_max && <h4>High: {props.temp_max}%</h4>}
+          {props.temp_min && <h4>Low: {props.temp_min}&#8457;</h4>}
+          {props.temp_max && <h4>High: {props.temp_max}&#8457;</h4>}
           {props.humidity && <h4>Humidity: {props.humidity}%</h4>}
        </div>
     </div>
