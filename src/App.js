@@ -121,7 +121,7 @@ class App extends React.Component {
             </p>
           </Col>
           <Col className="amd-right-col" md={true} sm={12}>
-          {!this.state.temperature && (<h1>Search something!</h1>)}
+          {!this.state.temperature && (<h1>Type in a city to <br/>check the weather!</h1>)}
             {this.state.temperature && (
               <Weather
                 temperature={this.state.temperature}
