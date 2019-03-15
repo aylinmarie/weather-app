@@ -41,7 +41,7 @@ class App extends React.Component{
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${Api_Key}`);
     const response = await api_call.json();
 
-    if(city && country && (response.cod != 404)) {
+    if(city && country && (response.cod !== 404)) {
       console.log(response)
       // Swap Icons based on Description
       let s = response.weather[0].id;
