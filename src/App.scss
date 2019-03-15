@@ -25,6 +25,12 @@ a:hover {
   }
   .amd-right-col {
     background: $blue;
+
+    h1 {
+      color: white;
+      font-weight: 100;
+      text-transform: lowercase;
+    }
   }
 }
 

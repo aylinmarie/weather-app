@@ -96,7 +96,7 @@ class App extends React.Component {
     return (
       <Container fluid={true} id="amd-weather-app">
         <Row>
-          <Col className="amd-left-col" md={true} sm={12} >
+          <Col className="amd-left-col" md={true} sm={12}>
             <FontAwesomeIcon
               color="#497098"
               size="2x"
@@ -110,7 +110,7 @@ class App extends React.Component {
             )}
             <Search loadWeather={this.getWeather} />
             <p className="amd-footer">
-              Designed and Developed by
+              Designed and Developed by{' '}
               <a
                 href="https://aylinmarie.co/"
                 target="_blank"
@@ -121,6 +121,7 @@ class App extends React.Component {
             </p>
           </Col>
           <Col className="amd-right-col" md={true} sm={12}>
+          {!this.state.temperature && (<h1>Search something!</h1>)}
             {this.state.temperature && (
               <Weather
                 temperature={this.state.temperature}
