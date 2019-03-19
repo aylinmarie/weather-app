@@ -1,17 +1,18 @@
-import React from 'react'
-import './App.scss'
-import { Alert } from 'reactstrap'
+import React from 'react';
+import './App.scss';
+import { Alert } from 'reactstrap';
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { fal } from '@fortawesome/pro-light-svg-icons'
-import { Container, Row, Col } from 'reactstrap'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fal } from '@fortawesome/pro-light-svg-icons';
+import { Container, Row, Col } from 'reactstrap';
 
-import Titles from './components/titles/titles.js'
-import Search from './components/search/search.js'
-import Weather from './components/weather/weather.js'
+import Titles from './components/titles/titles.js';
+import Search from './components/search/search.js';
+import Weather from './components/weather/weather.js';
+import { async } from 'q';
 
-library.add(fal)
+library.add(fal);
 
 const initialState = {
   temperature: undefined,
@@ -23,55 +24,66 @@ const initialState = {
   humidity: undefined,
   description: undefined,
   icon: undefined
-}
+};
 
 class App extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = initialState
+    super(props);
+    this.state = initialState;
+    this.getCountries();
   }
 
-  getWeather = async e => {
-    e.preventDefault()
-    const city = e.target.elements.city.value
-    const country = e.target.elements.country.value
+  getCountries = async e => {
+    const api_country = await fetch(`https://restcountries.eu/rest/v2/all`);
+    const response_country = await api_country.json();
 
-    const Api_Key = 'b8c41f2cff8f5a6e7650c586a7ef3b1f'
+    for (let i = 0; i < response_country.length; i++) {
+      const country = response_country[i].name;
+      return country;
+    }
+  };
+
+  getWeather = async e => {
+    e.preventDefault();
+    const city = e.target.elements.city.value;
+    const country = e.target.elements.country.value;
+
+    const Api_Key = 'b8c41f2cff8f5a6e7650c586a7ef3b1f';
     const api_call = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${Api_Key}`
-    )
-    const response = await api_call.json()
+    );
+    const response = await api_call.json();
 
     if (city && country && response.cod !== 404) {
-      console.log(response)
+      console.log(response);
       // Swap Icons based on Description
-      let s = response.weather[0].id
-      let newIcon
+      let s = response.weather[0].id;
+      let newIcon;
       switch (true) {
         case s >= 500 && s <= 599:
-          newIcon = 'fal fa-raindrops fa-4x'
-          break
+          newIcon = 'fal fa-raindrops fa-4x';
+          break;
         case s === 800:
-          newIcon = 'fal fa-sun fa-4x'
-          break
+          newIcon = 'fal fa-sun fa-4x';
+          break;
         case s >= 801 && s <= 805:
-          newIcon = 'fal fa-clouds fa-4x'
-          break
+          newIcon = 'fal fa-clouds fa-4x';
+          break;
         case s >= 200 && s <= 235:
-          newIcon = 'fal fa-thunderstorm fa-4x'
-          break
+          newIcon = 'fal fa-thunderstorm fa-4x';
+          break;
         case s >= 300 && s <= 321:
-          newIcon = 'fal fa-cloud-drizzle fa-4x'
-          break
+          newIcon = 'fal fa-cloud-drizzle fa-4x';
+          break;
         case s >= 600 && s <= 622:
-          newIcon = 'fal fa-snowflakes fa-4x'
-          break
+          newIcon = 'fal fa-snowflakes fa-4x';
+          break;
         case s >= 701 && s <= 781:
-          newIcon = 'fal fa-wind fa-4x'
-          break
+          newIcon = 'fal fa-wind fa-4x';
+          break;
         default:
-          newIcon = ''
-          break
+          newIcon = '';
+          break;
       }
       this.setState({
         temperature: Math.round((9 / 5) * (response.main.temp - 273) + 32),
@@ -84,14 +96,14 @@ class App extends React.Component {
         description: response.weather[0].description,
         icon: newIcon,
         error: ''
-      })
+      });
     } else {
-      this.setState(initialState)
+      this.setState(initialState);
       this.setState({
         error: "Oops, couldn't seem to find that on the map."
-      })
+      });
     }
-  }
+  };
   render() {
     return (
       <Container fluid={true} id="amd-weather-app">
@@ -121,7 +133,12 @@ class App extends React.Component {
             </p>
           </Col>
           <Col className="amd-right-col" md={true} sm={12}>
-          {!this.state.temperature && (<h1>Type in a city to <br/>check the weather!</h1>)}
+            {!this.state.temperature && (
+              <h1>
+                Type in a city to <br />
+                check the weather!
+              </h1>
+            )}
             {this.state.temperature && (
               <Weather
                 temperature={this.state.temperature}
@@ -138,8 +155,8 @@ class App extends React.Component {
           </Col>
         </Row>
       </Container>
-    )
+    );
   }
 }
 
-export default App
+export default App;
