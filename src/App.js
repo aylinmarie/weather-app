@@ -29,18 +29,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = initialState;
-    this.getCountries();
   }
-
-  getCountries = async e => {
-    const api_country = await fetch(`https://restcountries.eu/rest/v2/all`);
-    const response_country = await api_country.json();
-
-    for (let i = 0; i < response_country.length; i++) {
-      const country = response_country[i].name;
-      return country;
-    }
-  };
 
   getWeather = async e => {
     e.preventDefault();
