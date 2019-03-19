@@ -1,8 +1,9 @@
 import React from 'react';
 import './search.scss';
 
-import { Button, Form, FormGroup, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Dropdown } from 'react-bootstrap';
 import { Animated } from "react-animated-css";
+import { faRing } from '@fortawesome/pro-light-svg-icons';
 
 class Search extends React.Component{
   constructor(props) {
@@ -15,9 +16,9 @@ class Search extends React.Component{
         <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
           <Form onSubmit = {this.props.loadWeather} >
             <FormGroup>
-              <Input className="amd-field-input" type="text" name="city" placeholder="city" />
-              <Input className="amd-field-input" type="text" name="country" placeholder="country" />
-              <Button className="amd-search-button">Get Weather</Button>
+              <Form.Control className="amd-field-input" type="text" name="city" placeholder="city" />
+              <Form.Control className="amd-field-input" type="text" name="country" placeholder="country" />
+              <Button type="submit" className="amd-search-button">Get Weather</Button>
             </FormGroup>
           </Form>
         </Animated>

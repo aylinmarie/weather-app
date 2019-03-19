@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.scss';
-import { Alert } from 'reactstrap';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fal } from '@fortawesome/pro-light-svg-icons';
-import { Container, Row, Col } from 'reactstrap';
+import { Alert, Container, Row, Col } from 'react-bootstrap';
 
 import Titles from './components/titles/titles.js';
 import Search from './components/search/search.js';
