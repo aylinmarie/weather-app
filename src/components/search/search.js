@@ -29,7 +29,7 @@ class Search extends React.Component {
 
   render() {
     let createList = () => {
-      let singleCountry = []
+      let singleCountry = [];
 
       for (let i = 0; i < this.state.country.length; i++) {
         singleCountry.push(this.state.country[i].props.children.name);

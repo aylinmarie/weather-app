@@ -104,7 +104,7 @@ class App extends React.Component {
             />
             <Titles />
             {this.state.error && (
-              <Alert className="amd-error" color="danger">
+              <Alert className="amd-error" variant="warning">
                 {this.state.error}
               </Alert>
             )}
