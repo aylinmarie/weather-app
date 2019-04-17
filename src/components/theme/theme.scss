@@ -1,0 +1,19 @@
+@import '../../App.scss';
+
+.btn-group-toggle {
+    margin: auto;
+    label {
+        background-color: $lightgrey;
+        color: $blue;
+        border-color: $blue;
+        
+        &:hover {
+            cursor: pointer;
+            background-color: $blue;
+            opacity: .8;
+        }
+    }
+    .active {
+        background-color: $blue !important;
+    }
+}

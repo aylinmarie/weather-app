@@ -9,6 +9,8 @@ import { Alert, Container, Row, Col } from 'react-bootstrap';
 import Titles from './components/titles/titles.js';
 import Search from './components/search/search.js';
 import Weather from './components/weather/weather.js';
+import ToggleTheme from './components/theme/theme.js';
+
 import { async } from 'q';
 
 library.add(fal);
@@ -119,6 +121,7 @@ class App extends React.Component {
                 Aylin Marie
               </a>
             </p>
+            <ToggleTheme/>
           </Col>
           <Col className="amd-right-col" md={true} sm={12}>
             {!this.state.temperature && (
