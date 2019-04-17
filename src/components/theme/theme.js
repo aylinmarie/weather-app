@@ -10,12 +10,13 @@ class Theme extends React.Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      value: [1],
+      value: true,
     };
   }
-  handleChange(value, event) {
-    this.setState({ value });
-  }
+    handleChange(value, event) {
+        console.log(value);
+        this.setState({ value });
+    }
   
   render() {
     return (
@@ -26,9 +27,10 @@ class Theme extends React.Component {
                 name="options" 
                 value={this.state.value}
                 onChange={this.handleChange}
+                className={this.state.value ? 'light-mode': 'dark-mode'}
                 defaultValue={1}>
-            <ToggleButton value={1}>Day</ToggleButton>
-            <ToggleButton value={2}>Night</ToggleButton>
+            <ToggleButton value={true}>Day</ToggleButton>
+            <ToggleButton value={false}>Night</ToggleButton>
             </ToggleButtonGroup>
         </ButtonToolbar>
       </div>
