@@ -6,21 +6,20 @@ import { ButtonToolbar, ToggleButtonGroup, ToggleButton } from "react-bootstrap"
 
 
 class Theme extends React.Component {
-  constructor(props) {
-    super(props);
-    this.body = document.body;
-    console.log(this.body)
-    
-    this.handleChange = this.handleChange.bind(this);
-
-    this.state = {
-      value: true,
-    };
-  }
-    handleChange(value, event) {
-        console.log(value);
-        this.state.value ? this.body.classList.add('dark-mode') : this.body.classList.remove('dark-mode');
+    constructor(props) {
+        super(props);
+        document.documentElement.setAttribute("data-theme", "light");
+        this.toggleTheme = this.toggleTheme.bind(this);        
+        this.state = {
+            value: true,
+            theme: 'light'
+        };
+    }
+    toggleTheme(value, event) {
         this.setState({ value });
+        let theme = value ? 'light' : 'dark';
+        this.setState({ theme })
+        document.documentElement.setAttribute("data-theme", theme);
     }
   
   render() {
@@ -31,8 +30,7 @@ class Theme extends React.Component {
                 type="radio" 
                 name="options" 
                 value={this.state.value}
-                onChange={this.handleChange}
-                className={this.state.value ? 'light-mode': 'dark-mode'}
+                onChange={this.toggleTheme}
                 defaultValue={1}>
             <ToggleButton value={true}>Day</ToggleButton>
             <ToggleButton value={false}>Night</ToggleButton>

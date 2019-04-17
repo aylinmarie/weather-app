@@ -4,11 +4,13 @@ $beige: #cbc5ci;
 $lightgrey: #ebeced;
 $darkgrey: #3e3e3b;
 
-
-// Typography
 a,
 a:hover {
   color: $blue;
+}
+h1 {
+  font-weight: 100;
+  text-transform: lowercase;
 }
 
 #amd-weather-app {
@@ -24,30 +26,49 @@ a:hover {
     padding: 45px 30px;
   }
 
+  .amd-right-col {
+    h1 {
+      color: white;
+    }
+  }
+
+  .form-control {
+    max-width: 250px;
+    margin: 10px auto;
+  }
+
+  .amd-error {
+    margin: 20px 0;
+  }
+
+  .amd-footer {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+// Light Theme
+html[data-theme="light"] {
   .amd-left-col {
     background: $lightgrey;
   }
+
   .amd-right-col {
     background: $blue;
-
-    h1 {
-      color: white;
-      font-weight: 100;
-      text-transform: lowercase;
-    }
   }
 }
 
-.form-control {
-  max-width: 250px;
-  margin: 10px auto;
-}
+// Dark Theme
+html[data-theme="dark"] {
+  .amd-left-col {
+    background: $darkgrey;
+    h1,
+    p {
+      color: white !important;
+    }
+  }
 
-.amd-error {
-  margin: 20px 0;
-}
-
-.amd-footer {
-  margin-top: 20px;
-  text-align: center;
+  .amd-right-col {
+    background: $darkblue;
+  }
 }
