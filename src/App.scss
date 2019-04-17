@@ -4,13 +4,18 @@ $beige: #cbc5ci;
 $lightgrey: #ebeced;
 $darkgrey: #3e3e3b;
 
-a,
-a:hover {
-  color: $blue;
-}
+
 h1 {
   font-weight: 100;
   text-transform: lowercase;
+}
+
+i {
+  color: $lightgrey;
+}
+
+a, a:focus, a:hover {
+  color: $blue;
 }
 
 #amd-weather-app {
@@ -49,6 +54,10 @@ h1 {
 
 // Light Theme
 html[data-theme="light"] {
+  h1,
+  p {
+    color: $darkgrey;
+  }
   .amd-left-col {
     background: $lightgrey;
   }
@@ -60,12 +69,15 @@ html[data-theme="light"] {
 
 // Dark Theme
 html[data-theme="dark"] {
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    color: white;
+  }
   .amd-left-col {
     background: $darkgrey;
-    h1,
-    p {
-      color: white !important;
-    }
   }
 
   .amd-right-col {
