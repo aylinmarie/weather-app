@@ -42,8 +42,8 @@ class App extends React.Component {
     );
     const response = await api_call.json();
 
-    if (city && country && response.cod !== 404) {
-      console.log(response);
+    if (city && country && response.cod !== "404") {
+      console.log(response)
       // Swap Icons based on Description
       let s = response.weather[0].id;
       let newIcon;

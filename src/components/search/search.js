@@ -19,15 +19,23 @@ class Search extends React.Component {
     }).then(data => {
       let country = data.map((item) => {
         return( 
-        <p>{item.name}</p>
+        <p>{item}</p>
       )
     })
     this.setState({country: country});
-    console.log("country", this.state.country);
     })
   }
+  
 
   render() {
+    let createList = () => {
+      let singleCountry = []
+
+      for (let i = 0; i < this.state.country.length; i++) {
+        singleCountry.push(this.state.country[i].props.children.name);
+      }
+      return singleCountry
+    }
     return (
       <div className="amd-search">
         <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
@@ -40,6 +48,9 @@ class Search extends React.Component {
                 placeholder="city"
               />
             </FormGroup>
+            <Form.Control as="select" name="country">
+              {createList().map(value => <option key={value}>{value}</option> )}
+            </Form.Control>
             <Button type="submit" className="amd-search-button">
               Get Weather
             </Button>
