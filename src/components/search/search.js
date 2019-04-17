@@ -26,15 +26,13 @@ class Search extends React.Component {
     })
   }
   
-
   render() {
-    let createList = () => {
-      let singleCountry = [];
-
+    const createList = () => {
+      let countryArray = [];
       for (let i = 0; i < this.state.country.length; i++) {
-        singleCountry.push(this.state.country[i].props.children.name);
+        countryArray.push(this.state.country[i].props.children.name);
       }
-      return singleCountry
+      return countryArray
     }
     return (
       <div className="amd-search">
