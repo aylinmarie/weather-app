@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./theme.scss";
 
 import { ButtonToolbar, ToggleButtonGroup, ToggleButton } from "react-bootstrap";
@@ -7,6 +8,9 @@ import { ButtonToolbar, ToggleButtonGroup, ToggleButton } from "react-bootstrap"
 class Theme extends React.Component {
   constructor(props) {
     super(props);
+    this.body = document.body;
+    console.log(this.body)
+    
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
@@ -15,6 +19,7 @@ class Theme extends React.Component {
   }
     handleChange(value, event) {
         console.log(value);
+        this.state.value ? this.body.classList.add('dark-mode') : this.body.classList.remove('dark-mode');
         this.setState({ value });
     }
   
