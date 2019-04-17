@@ -1,7 +1,7 @@
 ## Weather App built with React
 
 ### Search Form
-![Search Form](https://github.com/aylinmarie/weather-app/blob/master/src/assets/img/front.png)
+![Light Mode](https://github.com/aylinmarie/weather-app/blob/master/src/assets/img/light.png)
 
 ### Weather Results
-![Weather Results](https://github.com/aylinmarie/weather-app/blob/master/src/assets/img/search.png)
+![Dark Mode](https://github.com/aylinmarie/weather-app/blob/master/src/assets/img/dark.png)
