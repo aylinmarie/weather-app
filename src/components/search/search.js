@@ -47,7 +47,7 @@ class Search extends React.Component {
               />
             </FormGroup>
             <Form.Control as="select" name="country">
-              {createList().map(value => <option selected={value == "United States of America"} key={value}>{value}</option> )}
+              {createList().map(value => <option selected={value === "United States of America"} key={value}>{value}</option> )}
             </Form.Control>
             <Button type="submit" className="amd-search-button">
               Get Weather
